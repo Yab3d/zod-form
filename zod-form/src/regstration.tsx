@@ -1,75 +1,23 @@
-import { useState } from "react";
+import { useForm } from "@tanstack/react-form";
 
-export function StandardRegistrationForm() {
- 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+export function SpeakerForm(){
+    const form = useForm({
+        defaultValues:{
+            firstName:'',
+            lastName:'',
+            twitterHandel:'',
+        },
+        onSubmit:async({value})=>{
+            console.log("form submitted",value);
+        }
+    })
 
-  console.log("Form Re-rendered! Current state:", formData.firstName);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  return (
-    <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 w-full max-w-md mx-auto mt-10 text-white">
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-red-500">The Problem</h2>
-        <p className="text-sm text-neutral-400">Standard Controlled Form</p>
-      </div>
-
-      <form className="space-y-4">
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-medium text-neutral-300">
-            First Name
-          </label>
-          <input
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            className="p-2 rounded-md bg-neutral-950 border border-neutral-700 focus:border-red-500 focus:outline-none"
-          />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-medium text-neutral-300">
-            Last Name
-          </label>
-          <input
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            className="p-2 rounded-md bg-neutral-950 border border-neutral-700 focus:border-red-500 focus:outline-none"
-          />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-medium text-neutral-300">
-            Email
-          </label>
-          <input
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="p-2 rounded-md bg-neutral-950 border border-neutral-700 focus:border-red-500 focus:outline-none"
-          />
-        </div>
-
-        <button
-          type="button"
-          className="w-full mt-4 bg-neutral-800 text-neutral-400 py-2 rounded-md font-bold cursor-not-allowed"
-        >
-          Sign Up
-        </button>
-      </form>
+return(
+   <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 max-w-md mx-auto text-white">
+      <h2 className="text-xl font-bold mb-6">Add New Speaker</h2>
+      {/* We will build the fields here */}
     </div>
-  );
+);
+
 }

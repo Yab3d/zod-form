@@ -1,10 +1,10 @@
-import { StandardRegistrationForm } from './regstration'
+import { SpeakerForm} from './regstration'
 import './App.css'
 
 function App() {
   return (
     <>
-      <StandardRegistrationForm />
+      <SpeakerForm/>
     </>
   )
 }
